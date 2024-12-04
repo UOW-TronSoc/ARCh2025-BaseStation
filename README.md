@@ -15,7 +15,7 @@
 Two basic ROS nodes, written in Python. The publisher is repsonsible for receiving JSON data issued by a server interface, then communicates with a subsciber node via a topic in native ROS2 communcation.
 
 ## Prerequisites
-Source ROS2 Humble and use `colcon build` to build the packages before implementation
+Source ROS2 Humble and use `colcon build` to compile the packages before implementation
 
 
 
