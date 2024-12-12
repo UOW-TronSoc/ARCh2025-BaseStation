@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TronSoc Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Icon linking -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="logo">TronSoc</div>
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="#">Control Pages</a>
+        <a href="#">Telemetry</a>
+        <a href="#">About</a>
+      </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main class="main-container">
+      <!-- Kanga Connections Section -->
+      <div class="kanga-connection">
+        <span class="material-symbols-outlined" id="kanga-icon">smart_toy</span>
+        <h2 class="device-name">Kanga</h2>
+        <div class="connect-buttons">
+          <button class="connect-btn">Connected</button>
+          <button class="disconnect-btn">Disconnect</button>
+        </div>
+        <button class="elipsis-btn">
+          <span class="material-symbols-outlined">more_horiz</span>
+        </button>
+      </div>
+
+      <!-- Middle Section -->
+      <div class="middle-section">
+        <!-- Data Graph Section -->
+        <div class="data-graph left-column">
+          <h3>Categories:</h3>
+          <div class="categories">
+            <button>POP</button>
+            <button>GLU</button>
+            <button class="active">SER</button>
+            <button>DOP</button>
+            <button>TON</button>
+          </div>
+          <div class="graph-container">
+            <!-- Placeholder for Graph -->
+            <canvas id="data-graph"></canvas>
+          </div>
+          <button class="download-btn">Download</button>
+        </div>
+
+        <!-- Logs Section -->
+        <div class="log-history right-column">
+          <h3>LOGS</h3>
+          <div class="log-content">
+            <p>14:22 27.07.2020 / connected to Kanga</p>
+            <p>14:23 27.07.2020 / search for optimal path for destination</p>
+          </div>
+          <button class="download-btn">Download Log</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
