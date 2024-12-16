@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 const ConnectionBar = () => {
-  const [isConnected, setIsConnected] = useState(false);
+  const [connected, setConnected] = useState(false);
 
   const handleConnect = async () => {
     try {
       await axios.post("http://localhost:8000/api/connect");
-      setIsConnected(true);
+      setConnected(true);
     } catch (error) {
       console.error("Error connecting:", error);
     }
@@ -17,39 +17,27 @@ const ConnectionBar = () => {
   const handleDisconnect = async () => {
     try {
       await axios.post("http://localhost:8000/api/disconnect");
-      setIsConnected(false);
+      setConnected(false);
     } catch (error) {
       console.error("Error disconnecting:", error);
     }
   };
 
   return (
-    <Container fluid className="p-3 mb-3 bg-dark rounded">
-      <Row className="align-items-center">
-        <Col md={8}>
-          <h4 className="m-0">Kanga</h4>
-        </Col>
-        <Col md={4} className="text-end">
-          {isConnected ? (
-            <Button
-              variant="success"
-              className="custom-btn"
-              onClick={handleDisconnect}
-            >
-              Connected
-            </Button>
-          ) : (
-            <Button
-              variant="danger"
-              className="custom-btn"
-              onClick={handleConnect}
-            >
-              Disconnect
-            </Button>
-          )}
-        </Col>
-      </Row>
-    </Container>
+    <div className="connection-bar d-flex justify-content-between align-items-center">
+      <h4 className="m-0">Kanga</h4>
+      <div>
+        {connected ? (
+          <Button variant="success" onClick={handleDisconnect}>
+            Connected
+          </Button>
+        ) : (
+          <Button variant="danger" onClick={handleConnect}>
+            Disconnect
+          </Button>
+        )}
+      </div>
+    </div>
   );
 };
 
