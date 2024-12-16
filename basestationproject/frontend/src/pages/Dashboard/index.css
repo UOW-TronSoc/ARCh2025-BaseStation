@@ -1,0 +1,29 @@
+:root {
+  --primary-bg: #1e1e24;
+  --secondary-bg: #2d2d35;
+  --primary-text: #ffffff;
+  --secondary-text: #aaaaaa;
+  --accent-color: #6c5ce7;
+  --connected-color: #28a745;
+  --disconnected-color: #dc3545;
+}
+
+body {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+}
+
+.card {
+  background-color: var(--secondary-bg);
+  color: var(--primary-text);
+  border: none;
+}
+
+.card-highlight {
+  border: 2px solid var(--accent-color);
+}
+
+.custom-btn {
+  border-radius: 0.5rem;
+  padding: 0.3rem 1rem;
+}

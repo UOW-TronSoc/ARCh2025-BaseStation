@@ -1,14 +1,17 @@
-from django.shortcuts import render
+from django.core.cache import cache
+from django.http import JsonResponse
 
-# Create your views here.
+# View to store device data in Redis
+def store_devices(request):
+    devices = [
+        {"name": "Function", "status": 15},
+        {"name": "Function", "status": 63},
+        {"name": "Function", "status": 41},
+    ]
+    cache.set("connected_devices", devices, timeout=None)  # Store in Redis
+    return JsonResponse({"message": "Devices stored successfully!"})
 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-
-
-@api_view(['GET'])
-def hello_world(request):
-    return Response({'message': 'Hello, world!'})
-
-
-# backend functional code here or where you will post to
+# View to retrieve device data from Redis
+def get_devices(request):
+    devices = cache.get("connected_devices", [])  # Fetch from Redis
+    return JsonResponse(devices, safe=False)

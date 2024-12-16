@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
+from .views import store_devices, get_devices
 
 urlpatterns = [
-    path('hello-world/', views.hello_world, name='hello_world'),
-    # pages urls here
+    path("api/devices", get_devices, name="get_devices"),
+    path("api/store-devices", store_devices, name="store_devices"),
 ]
