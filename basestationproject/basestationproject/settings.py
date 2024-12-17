@@ -37,12 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'backendapi',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -50,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'backendapi.urls'
+ROOT_URLCONF = 'basestationproject.urls'
 
 TEMPLATES = [
     {
@@ -70,12 +72,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'basestationproject.wsgi.application'
 
-REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',  # JSON renderer for APIs
-        # 'rest_framework.renderers.BrowsableAPIRenderer',  # Optional for web debugging
-    ],
-}
+
+CSRF_TRUSTED_ORIGINS = [
+  'http://localhost:3000'  # React development server
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Database
@@ -87,6 +89,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",  # Redis URL with database 1
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "KEY_PREFIX": "tron_soc_dashboard"
+    }
+}
+
 
 
 # Password validation
