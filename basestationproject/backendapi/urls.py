@@ -10,5 +10,4 @@ urlpatterns = [
     path('api/rover/move/', RoverMove.as_view(), name='rover-move'),
     path('api/rover/start/', RoverStart.as_view(), name='rover-start'),
     path('api/rover/stop/', RoverStop.as_view(), name='rover-stop'),
-    path('admin/', admin.site.urls),
 ]
