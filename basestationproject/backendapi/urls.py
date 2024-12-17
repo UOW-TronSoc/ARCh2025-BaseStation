@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from views import *
 
 urlpatterns = [
     # API endpoint to store mock device data in Redis
@@ -17,4 +18,12 @@ urlpatterns = [
     # Optional: Endpoints for connecting and disconnecting the rover
     path("api/connect", views.connect_rover, name="connect_rover"),
     path("api/disconnect", views.disconnect_rover, name="disconnect_rover"),
+
+    path('api/command/', RoverCommand.as_view(), name='rover-command'),
+    path('api/arm-overview/', ArmOverview.as_view(), name='rover-arm-overview'),
+    path('api/arm/activate/', ArmActivate.as_view(), name='arm-activate'),
+    path('api/arm/deactivate/', ArmDeactivate.as_view(), name='arm-deactivate'),
+    path('api/rover/move/', RoverMove.as_view(), name='rover-move'),
+    path('api/rover/start/', RoverStart.as_view(), name='rover-start'),
+    path('api/rover/stop/', RoverStop.as_view(), name='rover-stop'),
 ]
